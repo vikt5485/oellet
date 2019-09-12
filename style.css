@@ -31,6 +31,7 @@ header {
     background-color: var(--secondary-color);
 }
 
+
 nav {
     width: 100vw;
     height: 100vh;
@@ -47,6 +48,11 @@ nav {
 
 .toggle_menu {
     transform: translateX(100%);
+}
+
+.logo {
+    height: 100%;
+    grid-column: 1 / span 1;
 }
 
 .menu_links {
@@ -136,10 +142,6 @@ nav {
     left: 50%;
 }
 
-.logo {
-    height: 100%;
-    grid-column: 1 / span 1;
-}
 
 h1 {
     font-family: interstate, sans-serif;
@@ -150,13 +152,38 @@ h1 {
     color: var(--third-color);
 }
 
+h2 {
+    font-family: interstate, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 2rem;
+    color: var(--main-color);
+    margin: 10px 0 5px 0;
+}
+
 h3 {
+    font-family: interstate-compressed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
     font-size: 1.8rem;
-    color: var(--third-color);
+    color: var(--main-color);
     margin: 0 0 5px 0;
 }
 
+p {
+    font-size: 1.6rem;
+    font-family: interstate, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--main-color);
+    margin: 15px 10px 10px 0;
+}
+
 h4 {
+    font-size: 1.6rem;
+    font-family: interstate, sans-serif;
+    font-weight: 400;
+    font-style: normal;
     font-size: 1.6rem;
     font-weight: normal;
     color: var(--third-color);
@@ -226,12 +253,16 @@ h4 {
     height: 200px;
     margin: 20px;
     padding: 20px;
-    background-color: white;
+    background-color: var(--third-color);
+    border-radius: 8px;
+    border: 10px solid var(--main-color);
+    border-style: double;
 }
 
 .billede {
     height: 100%;
     float: left;
+    margin: 5px 40px 5px 10px;
 }
 
 #popup {

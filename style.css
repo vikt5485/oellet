@@ -19,7 +19,39 @@ html {
     scroll-behavior: smooth;
 }
 
+header {
+    display: grid;
+    width: 100vw;
+    height: 150px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    padding: 10px;
+    background-color: var(--secondary-color);
+}
+
+.logo {
+    height: 100%;
+    grid-column: 1 / span 1;
+}
+
+header nav {
+    align-self: end;
+    text-align: right;
+}
+
+header nav a {
+    font-family: interstate-condensed, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color: white;
+    font-size: 1.8rem;
+    text-decoration: none;
+}
+
 h1 {
+    font-family: interstate, sans-serif;
+    font-weight: 200;
+    font-style: normal;
     font-size: 3rem;
     text-align: center;
     color: var(--third-color);
@@ -102,6 +134,7 @@ h4 {
     margin: 20px;
     padding: 20px;
     background-color: white;
+
 }
 
 .billede {

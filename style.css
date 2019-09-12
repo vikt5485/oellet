@@ -92,6 +92,24 @@ h4 {
     transform: scale(1.03);
 }
 
+#data_container {
+    display: grid;
+    width: 100vw;
+}
+
+.beer {
+    height: 200px;
+    margin: 20px;
+    padding: 20px;
+    background-color: white;
+
+}
+
+.billede {
+    height: 100%;
+    float: left;
+}
+
 footer {
     background-color: var(--secondary-color);
     height: 130px;

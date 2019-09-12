@@ -9,7 +9,57 @@
 </head>
 
 <body>
-    <script></script>
-</body>
+    <main>
+        <section id="data_container"></section>
+    </main>
+    <template>
+        <article class="beer">
+            <img class="billede" src="" alt="">
+            <h2 class="navn"></h2>
+            <h3 class="bryghus"></h3>
+            <p class="kort"></p>
+        </article>
+    </template>
 
-</html>
+    <script>
+        document.addEventListener("DOMContentLoaded", getJson);
+        let allBeer;
+        const dataContainer = document.querySelector("#data_container");
+        const temp = document.querySelector("template");
+
+        let kategori = "alle";
+
+        //Hent JSON fil i asynkron funktion
+        async function getJson() {
+            console.log("getJson");
+            //Henter data filen
+            const jsonData = await fetch("https://spreadsheets.google.com/feeds/list/14tywrtgcW7uGWMJLRVqmUBqoCW0i4saGFXyGTiFyzh0/od6/public/values?alt=json");
+            //Den hentede data tolkes som data
+            allBeer = await jsonData.json();
+            console.log(allBeer);
+            //Kald funktionen der viser data i DOM
+            showBeer();
+        }
+
+        function showBeer() {
+            console.log("Viser øl efter filtrering")
+            data_container.innerHTML = "";
+
+            allBeer.feed.entry.forEach(beer => {
+                if (kategori == "alle" || kategori == beer.gsx$overkategori.$t) {
+                    let klon = temp.cloneNode(true).content;
+                    klon.querySelector(".billede").src = `imgs/oel/${beer.gsx$billede.$t}.jpg`;
+                    klon.querySelector(".billede").alt = `Billede af ${beer.gsx$navn.$t}`;
+                    klon.querySelector(".navn").textContent = beer.gsx$navn.$t;
+                    klon.querySelector(".kort").textContent = beer.gsx$kort.$t;
+                    klon.querySelector(".bryghus").textContent = `Bryghus: ${beer.gsx$bryghus.$t}`;
+
+                    dataContainer.appendChild(klon);
+
+
+                }
+            })
+
+        }
+    </script>
+</body></html>

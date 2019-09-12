@@ -124,9 +124,9 @@
             //LANG
             document.querySelector(".single_beer .lang").textContent = pilsner.gsx$lang.$t;
             //PROCENT
-            document.querySelector(".single_beer .procent").textContent = `ABV: ${pilsner.gsx$procent.$t}%`;
+            document.querySelector(".single_beer .procent").innerHTML = `<em>ABV:</em> ${pilsner.gsx$procent.$t}%`;
             //PRIS
-            document.querySelector(".single_beer .pris").textContent = `Pris: ${pilsner.gsx$pris.$t},-`;
+            document.querySelector(".single_beer .pris").innerHTML = `<em>Pris:</em> ${pilsner.gsx$pris.$t},-`;
 
 
             document.querySelector(".luk").addEventListener("click", () => {

@@ -6,12 +6,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Øllet - Alle Øl</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        #popup {
+            position: fixed;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.75);
+            justify-content: center;
+            align-items: center;
+            display: none;
+            z-index: 90;
+        }
+
+        .indhold {
+            width: 80vw;
+            max-width: 600px;
+            max-height: 80vh;
+            background-color: white;
+            padding: 20px;
+            overflow: scroll;
+            z-index: 100;
+            color: black;
+        }
+
+        .single_beer img {
+            height: 400px;
+            float: right;
+        }
+
+        .single_beer h1 {
+            font-size: 3rem;
+            color: black;
+            text-align: left;
+            margin: 0 0 5px 0;
+        }
+
+        .single_beer h2 {
+            font-size: 2rem;
+            color: black;
+            text-align: left;
+            margin: 0 0 5px 0;
+        }
+
+        .single_beer p {
+            font-size: 1.6rem;
+        }
+
+        .luk {
+            float: right;
+            font-size: 2.5rem;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            background-color: transparent;
+        }
+
+    </style>
 </head>
 
 <body>
+    <nav>
+        <button class="filter valgt" data-overkategori="alle">Alle øl</button>
+        <button class="filter" data-overkategori="pilsner">Pilsner</button>
+        <button class="filter" data-overkategori="pale_ale">Pale Ale</button>
+        <button class="filter" data-overkategori="stout">Stout</button>
+    </nav>
     <main>
         <section id="data_container"></section>
     </main>
+    <div id="popup">
+        <section class="indhold">
+            <button class="luk">X</button>
+            <article class="single_beer">
+                <img src="" alt="">
+                <h1 class="single_navn"></h1>
+                <h2 class="bryghus"></h2>
+
+                <p class="lang"></p>
+                <p class="procent"></p>
+                <p class="pris"></p>
+            </article>
+        </section>
+    </div>
+
     <template>
         <article class="beer">
             <img class="billede" src="" alt="">
@@ -27,7 +105,7 @@
         const dataContainer = document.querySelector("#data_container");
         const temp = document.querySelector("template");
 
-        let kategori = "alle";
+        let overKategori = "alle";
 
         //Hent JSON fil i asynkron funktion
         async function getJson() {
@@ -42,11 +120,11 @@
         }
 
         function showBeer() {
-            console.log("Viser øl efter filtrering")
+            console.log("showBeer")
             data_container.innerHTML = "";
 
             allBeer.feed.entry.forEach(beer => {
-                if (kategori == "alle" || kategori == beer.gsx$overkategori.$t) {
+                if (overKategori == "alle" || overKategori == beer.gsx$overkategori.$t) {
                     let klon = temp.cloneNode(true).content;
                     klon.querySelector(".billede").src = `imgs/oel/${beer.gsx$billede.$t}.jpg`;
                     klon.querySelector(".billede").alt = `Billede af ${beer.gsx$navn.$t}`;
@@ -56,10 +134,60 @@
 
                     dataContainer.appendChild(klon);
 
-
+                    dataContainer.lastElementChild.addEventListener("click", () => {
+                        visSingle(beer);
+                    })
                 }
             })
-
+            kategoriKlik();
         }
+
+        function visSingle(beer) {
+            console.log("visSingle");
+            document.querySelector("#popup").style.display = "flex";
+
+            //NAVN
+            document.querySelector(".single_navn").textContent = beer.gsx$navn.$t;
+            //BRYGHUS
+            document.querySelector(".single_beer .bryghus").textContent = `Bryghus: ${beer.gsx$bryghus.$t}`;
+            //BILLEDE
+            document.querySelector(".single_beer img").src = `imgs/oel/${beer.gsx$billede.$t}.jpg`;
+            document.querySelector(".single_beer img").alt = `Billede af ${beer.gsx$navn.$t}`;
+            //LANG
+            document.querySelector(".single_beer .lang").textContent = beer.gsx$lang.$t;
+            //PROCENT
+            document.querySelector(".single_beer .procent").textContent = `ABV: ${beer.gsx$procent.$t}%`;
+            //PRIS
+            document.querySelector(".single_beer .pris").textContent = `Pris: ${beer.gsx$pris.$t},-`;
+
+
+            document.querySelector(".luk").addEventListener("click", () => {
+                document.querySelector("#popup").style.display = "none";
+            })
+        }
+
+
+        function kategoriKlik() {
+            console.log("kategoriKlik");
+            document.querySelectorAll(".filter").forEach(knap => {
+                knap.addEventListener("click", filtrering);
+            })
+        }
+
+        function filtrering() {
+            console.log("filtrering");
+
+            overKategori = this.dataset.overkategori;
+
+            document.querySelectorAll(".filter").forEach(knap => {
+                knap.classList.remove("valgt");
+            })
+
+            this.classList.add("valgt");
+            showBeer();
+        }
+
     </script>
-</body></html>
+</body>
+
+</html>

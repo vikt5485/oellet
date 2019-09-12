@@ -188,6 +188,11 @@ h4 {
     margin: 0 0 5px 0;
 }
 
+.hej {
+    background-clip: border-box;
+    backface-visibility: hidden;
+}
+
 .single_beer p {
     font-size: 1.6rem;
 }

@@ -2,6 +2,7 @@
     --main-color: #3C3C3C;
     --secondary-color: #50524F;
     --third-color: white;
+    --light-orange: #ffb72f;
 }
 
 * {
@@ -226,7 +227,6 @@ h4 {
     margin: 20px;
     padding: 20px;
     background-color: white;
-
 }
 
 .billede {
@@ -287,6 +287,33 @@ h4 {
     font-weight: bold;
     cursor: pointer;
     background-color: transparent;
+}
+
+.knapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 30px;
+    margin: 30px;
+}
+
+button {
+    height: 50px;
+    background-color: transparent;
+    border: 2px solid var(--third-color);
+    outline: 5px solid var(--third-color);
+    outline-offset: 3px;
+    color: var(--third-color);
+    font-size: 3rem;
+    font-family: interstate, sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.valgt {
+    border: 2px solid var(--light-orange);
+    outline: 5px solid var(--light-orange);
+    color: var(--light-orange);
 }
 
 footer {

@@ -73,7 +73,7 @@ nav {
     color: white;
     font-size: 4rem;
     text-decoration: none;
-    color: var(--main-color);
+    color: var(--third-color);
     text-align: center;
 }
 
@@ -128,12 +128,12 @@ nav {
 
 #burger_knap.open div:nth-child(2) {
     transform: rotate(45deg);
-    background-color: var(--main-color);
+    background-color: var(--third-color);
 }
 
 #burger_knap.open div:nth-child(3) {
     transform: rotate(-45deg);
-    background-color: var(--main-color);
+    background-color: var(--third-color);
 }
 
 #burger_knap.open div:nth-child(4) {
@@ -188,6 +188,11 @@ h4 {
     font-weight: normal;
     color: var(--third-color);
     margin: 0 0 3px 0;
+}
+
+em {
+    font-weight: 700;
+    font-style: normal;
 }
 
 #splash {
@@ -257,6 +262,7 @@ h4 {
     border-radius: 8px;
     border: 10px solid var(--main-color);
     border-style: double;
+    cursor: pointer;
 }
 
 .billede {
@@ -274,7 +280,7 @@ h4 {
     justify-content: center;
     align-items: center;
     display: none;
-    z-index: 90;
+    z-index: 130;
 }
 
 .indhold {
@@ -284,7 +290,7 @@ h4 {
     background-color: white;
     padding: 20px;
     overflow: scroll;
-    z-index: 100;
+    z-index: 140;
     color: black;
 }
 
@@ -295,20 +301,21 @@ h4 {
 
 .single_beer h1 {
     font-size: 3rem;
-    color: black;
+    color: var(--secondary-color);
     text-align: left;
     margin: 0 0 5px 0;
 }
 
 .single_beer h2 {
     font-size: 2rem;
-    color: black;
+    color: var(--secondary-color);
     text-align: left;
     margin: 0 0 5px 0;
 }
 
 .single_beer p {
     font-size: 1.6rem;
+    color: var(--secondary-color);
 }
 
 .luk {
@@ -318,6 +325,7 @@ h4 {
     font-weight: bold;
     cursor: pointer;
     background-color: transparent;
+    color: var(--secondary-color);
 }
 
 .knapper {

@@ -93,7 +93,7 @@
                     klon.querySelector(".billede").alt = `Billede af ${beer.gsx$navn.$t}`;
                     klon.querySelector(".navn").textContent = beer.gsx$navn.$t;
                     klon.querySelector(".kort").textContent = beer.gsx$kort.$t;
-                    klon.querySelector(".bryghus").textContent = `Bryghus: ${beer.gsx$bryghus.$t}`;
+                    klon.querySelector(".bryghus").innerHTML = `<em>Bryghus:</em> ${beer.gsx$bryghus.$t}`;
 
                     dataContainer.appendChild(klon);
 
@@ -119,9 +119,9 @@
             //LANG
             document.querySelector(".single_beer .lang").textContent = beer.gsx$lang.$t;
             //PROCENT
-            document.querySelector(".single_beer .procent").textContent = `ABV: ${beer.gsx$procent.$t}%`;
+            document.querySelector(".single_beer .procent").innerHTML = `<em>ABV:</em> ${beer.gsx$procent.$t}%`;
             //PRIS
-            document.querySelector(".single_beer .pris").textContent = `Pris: ${beer.gsx$pris.$t},-`;
+            document.querySelector(".single_beer .pris").innerHTML = `<em>Pris:</em> ${beer.gsx$pris.$t},-`;
 
 
             document.querySelector(".luk").addEventListener("click", () => {

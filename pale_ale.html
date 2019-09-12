@@ -30,7 +30,126 @@
         </nav>
     </header>
 
+    <div class="knapper">
+        <button class="filter valgt" data-underkategori="alle">Alle</button>
+        <button class="filter" data-underkategori="ipa">IPA</button>
+        <button class="filter" data-underkategori="brown_ale">Brown </button>
+        <button class="filter" data-underkategori="american_ale">American </button>
+    </div>
+    <main>
+        <section id="data_container"></section>
+    </main>
+    <div id="popup">
+        <section class="indhold">
+            <button class="luk">X</button>
+            <article class="single_beer">
+                <img src="" alt="">
+                <h1 class="single_navn"></h1>
+                <h2 class="bryghus"></h2>
+
+                <p class="lang"></p>
+                <p class="procent"></p>
+                <p class="pris"></p>
+            </article>
+        </section>
+    </div>
+
+    <template>
+        <article class="beer">
+            <img class="billede" src="" alt="">
+            <h2 class="navn"></h2>
+            <h3 class="bryghus"></h3>
+            <p class="kort"></p>
+        </article>
+    </template>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", getJson);
+        let allPaleAle;
+        const dataContainer = document.querySelector("#data_container");
+        const temp = document.querySelector("template");
+
+        let underKategori = "alle";
+
+        //Hent JSON fil i asynkron funktion
+        async function getJson() {
+            console.log("getJson");
+            //Henter data filen
+            const jsonData = await fetch("https://spreadsheets.google.com/feeds/list/14tywrtgcW7uGWMJLRVqmUBqoCW0i4saGFXyGTiFyzh0/od6/public/values?alt=json");
+            //Den hentede data tolkes som data
+            allPaleAle = await jsonData.json();
+            console.log(allPaleAle);
+            //Kald funktionen der viser data i DOM
+            showPaleAles();
+        }
+
+        function showPaleAles() {
+            console.log("showPaleAles")
+            data_container.innerHTML = "";
+
+            allPaleAle.feed.entry.forEach(beer => {
+                if (beer.gsx$overkategori.$t == "pale_ale" && underKategori == "alle" || underKategori == beer.gsx$underkategori.$t) {
+                    let klon = temp.cloneNode(true).content;
+                    klon.querySelector(".billede").src = `imgs/oel/${beer.gsx$billede.$t}.jpg`;
+                    klon.querySelector(".billede").alt = `Billede af ${beer.gsx$navn.$t}`;
+                    klon.querySelector(".navn").textContent = beer.gsx$navn.$t;
+                    klon.querySelector(".kort").textContent = beer.gsx$kort.$t;
+                    klon.querySelector(".bryghus").textContent = `Bryghus: ${beer.gsx$bryghus.$t}`;
+
+                    dataContainer.appendChild(klon);
+
+                    dataContainer.lastElementChild.addEventListener("click", () => {
+                        visSingle(beer);
+                    })
+                }
+            })
+            kategoriKlik();
+        }
+
+        function visSingle(beer) {
+            console.log("visSingle");
+            document.querySelector("#popup").style.display = "flex";
+
+            //NAVN
+            document.querySelector(".single_navn").textContent = beer.gsx$navn.$t;
+            //BRYGHUS
+            document.querySelector(".single_beer .bryghus").textContent = `Bryghus: ${beer.gsx$bryghus.$t}`;
+            //BILLEDE
+            document.querySelector(".single_beer img").src = `imgs/oel/${beer.gsx$billede.$t}.jpg`;
+            document.querySelector(".single_beer img").alt = `Billede af ${beer.gsx$navn.$t}`;
+            //LANG
+            document.querySelector(".single_beer .lang").textContent = beer.gsx$lang.$t;
+            //PROCENT
+            document.querySelector(".single_beer .procent").innerHTML = `<em>ABV:</em> ${beer.gsx$procent.$t}%`;
+            //PRIS
+            document.querySelector(".single_beer .pris").innerHTML = `<em>Pris:</em> ${beer.gsx$pris.$t},-`;
 
 
+            document.querySelector(".luk").addEventListener("click", () => {
+                document.querySelector("#popup").style.display = "none";
+            })
+        }
+
+
+        function kategoriKlik() {
+            console.log("kategoriKlik");
+            document.querySelectorAll(".filter").forEach(knap => {
+                knap.addEventListener("click", filtrering);
+            })
+        }
+
+        function filtrering() {
+            console.log("filtrering");
+
+            underKategori = this.dataset.underkategori;
+
+            document.querySelectorAll(".filter").forEach(knap => {
+                knap.classList.remove("valgt");
+            })
+
+            this.classList.add("valgt");
+            showPaleAles();
+        }
+    </script>
     <script src="burgerMenu.js"></script>
 </body></html>

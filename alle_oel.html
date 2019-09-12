@@ -6,72 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Øllet - Alle Øl</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        #popup {
-            position: fixed;
-            top: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.75);
-            justify-content: center;
-            align-items: center;
-            display: none;
-            z-index: 90;
-        }
-
-        .indhold {
-            width: 80vw;
-            max-width: 600px;
-            max-height: 80vh;
-            background-color: white;
-            padding: 20px;
-            overflow: scroll;
-            z-index: 100;
-            color: black;
-        }
-
-        .single_beer img {
-            height: 400px;
-            float: right;
-        }
-
-        .single_beer h1 {
-            font-size: 3rem;
-            color: black;
-            text-align: left;
-            margin: 0 0 5px 0;
-        }
-
-        .single_beer h2 {
-            font-size: 2rem;
-            color: black;
-            text-align: left;
-            margin: 0 0 5px 0;
-        }
-
-        .single_beer p {
-            font-size: 1.6rem;
-        }
-
-        .luk {
-            float: right;
-            font-size: 2.5rem;
-            border: none;
-            font-weight: bold;
-            cursor: pointer;
-            background-color: transparent;
-        }
-
-    </style>
+    <link rel="stylesheet" href="https://use.typekit.net/xny8hjv.css">
 </head>
 
 <body>
-    <nav>
+    <header>
+        <img class="logo" src="imgs/assets/logo.svg" alt="logo">
+        <nav>
+            <a href="alle_oel.html"> ALLE ØL </a>
+            <a href="pilsner.html"> PILSNER </a>
+            <a href="pale_ale.html"> PALE ALE </a>
+            <a href="stout.html"> STOUT </a>
+        </nav>
+    </header>
+    <div class="knapper">
         <button class="filter valgt" data-overkategori="alle">Alle øl</button>
         <button class="filter" data-overkategori="pilsner">Pilsner</button>
         <button class="filter" data-overkategori="pale_ale">Pale Ale</button>
         <button class="filter" data-overkategori="stout">Stout</button>
-    </nav>
+    </div>
     <main>
         <section id="data_container"></section>
     </main>
@@ -186,8 +139,5 @@
             this.classList.add("valgt");
             showBeer();
         }
-
     </script>
-</body>
-
-</html>
+</body></html>

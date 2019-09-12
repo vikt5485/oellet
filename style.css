@@ -142,6 +142,61 @@ h4 {
     float: left;
 }
 
+#popup {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.75);
+    justify-content: center;
+    align-items: center;
+    display: none;
+    z-index: 90;
+}
+
+.indhold {
+    width: 80vw;
+    max-width: 600px;
+    max-height: 80vh;
+    background-color: white;
+    padding: 20px;
+    overflow: scroll;
+    z-index: 100;
+    color: black;
+}
+
+.single_beer img {
+    height: 400px;
+    float: right;
+}
+
+.single_beer h1 {
+    font-size: 3rem;
+    color: black;
+    text-align: left;
+    margin: 0 0 5px 0;
+}
+
+.single_beer h2 {
+    font-size: 2rem;
+    color: black;
+    text-align: left;
+    margin: 0 0 5px 0;
+}
+
+.single_beer p {
+    font-size: 1.6rem;
+}
+
+.luk {
+    float: right;
+    font-size: 2.5rem;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: transparent;
+}
+
 footer {
     background-color: var(--secondary-color);
     height: 130px;

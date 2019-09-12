@@ -29,6 +29,10 @@ header {
     background-color: var(--secondary-color);
 }
 
+.kirstine {
+    background-color: aqua;
+}
+
 .logo {
     height: 100%;
     grid-column: 1 / span 1;

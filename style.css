@@ -393,7 +393,7 @@ em {
     grid-template-columns: 1fr 1fr;
     grid-gap: 30px;
     margin: 30px auto 10px auto;
-    max-width: 440px;
+    max-width: 90vw;
 }
 
 button {
@@ -403,7 +403,7 @@ button {
     outline: 5px solid var(--third-color);
     outline-offset: 3px;
     color: var(--third-color);
-    font-size: 2.3rem;
+    font-size: 2rem;
     font-family: interstate, sans-serif;
     font-weight: 900;
     text-transform: uppercase;
@@ -445,6 +445,13 @@ footer {
         grid-template-columns: 1fr 1fr;
     }
 
+    button {
+        font-size: 2.8rem;
+    }
+
+    .knapper {
+        max-width: 500px;
+    }
 
     #navigation {
         grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -458,8 +465,6 @@ footer {
     #data_container {
         grid-template-columns: 1fr 1fr 1fr;
     }
-
-
 
     #burger_knap {
         display: none;
@@ -497,5 +502,8 @@ footer {
         margin-bottom: 10px;
     }
 
-
+    .knapper {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 800px;
+    }
 }

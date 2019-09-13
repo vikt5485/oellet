@@ -171,6 +171,8 @@ h1 {
     color: var(--third-color);
 }
 
+
+
 h2 {
     font-family: interstate, sans-serif;
     font-weight: 200;
@@ -240,7 +242,7 @@ em {
     background-position: 90% 0%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
     justify-items: center;
 }
 
@@ -249,8 +251,20 @@ em {
     grid-row: 2/3;
 }
 
-#splash a {
+#splash h1 {
+    font-family: interstate, sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 10rem;
+    text-align: center;
+    color: var(--third-color);
     grid-row: 3/4;
+    margin-top: 2px;
+    max-height: 100px
+}
+
+#splash a {
+    grid-row: 4/4;
     align-self: end;
     width: 50px;
 }

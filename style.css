@@ -25,7 +25,7 @@ header {
     display: grid;
     width: 100vw;
     height: 150px;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     background-color: var(--secondary-color);
 }
@@ -50,11 +50,25 @@ nav {
 }
 
 #logo {
+    display: flex;
+    align-items: center;
     height: 150px;
+    width: 200px;
     padding: 20px;
 }
 
-header #logo a img {
+#logo h1 {
+    text-align: left;
+    margin-left: 10px;
+    font-family: interstate, sans-serif;
+    font-weight: 100;
+}
+
+header a {
+    text-decoration: none;
+}
+
+header #logo img {
     height: 100%;
 }
 
@@ -178,8 +192,7 @@ p {
     font-family: interstate, sans-serif;
     font-weight: 400;
     font-style: normal;
-    color: var(--main-color);
-    margin: 15px 10px 10px 0;
+    color: var(--third-color);
 }
 
 h4 {
@@ -196,6 +209,24 @@ h4 {
 em {
     font-weight: 700;
     font-style: normal;
+}
+
+.kort {
+    font-size: 1.6rem;
+    font-family: interstate, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--main-color);
+    margin: 15px 10px 10px 0;
+}
+
+.beskrivelse {
+    margin: 30px;
+    text-align-last: left;
+}
+
+.beskrivelse h1 {
+    margin-bottom: 0px;
 }
 
 #splash {
@@ -254,12 +285,13 @@ em {
 
 #data_container {
     display: grid;
+    padding: 10px;
+    grid-gap: 10px;
     width: 100vw;
 }
 
 .beer {
     height: 200px;
-    margin: 20px;
     padding: 20px;
     background-color: var(--third-color);
     border-radius: 8px;
@@ -331,11 +363,19 @@ em {
     color: var(--secondary-color);
 }
 
+.luk:hover {
+    border: none;
+    outline: none;
+    color: var(--light-orange);
+}
+
 .knapper {
     display: grid;
+    justify-content: center;
     grid-template-columns: 1fr 1fr;
     grid-gap: 30px;
-    margin: 30px;
+    margin: 30px auto 10px auto;
+    max-width: 440px;
 }
 
 button {
@@ -345,11 +385,17 @@ button {
     outline: 5px solid var(--third-color);
     outline-offset: 3px;
     color: var(--third-color);
-    font-size: 3rem;
+    font-size: 2.3rem;
     font-family: interstate, sans-serif;
     font-weight: 900;
     text-transform: uppercase;
     cursor: pointer;
+}
+
+button:hover {
+    border: 2px solid #ffcd6e;
+    outline: 5px solid #ffcd6e;
+    color: #ffcd6e;
 }
 
 .valgt {
@@ -369,5 +415,17 @@ footer {
 @media only screen and (min-width: 600px) {
     #splash {
         background-position: 50% 0%;
+    }
+}
+
+@media only screen and (min-width: 750px) {
+    #data_container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    #data_container {
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }

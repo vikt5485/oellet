@@ -11,9 +11,12 @@
 
 <body>
     <header>
-        <div id="logo">
-            <a href="index.html"><img src="imgs/assets/logo.svg" alt="logo"></a>
-        </div>
+        <a href="index.html">
+            <div id="logo">
+                <img src="imgs/assets/logo.svg" alt="logo">
+                <h1>ØLLET</h1>
+            </div>
+        </a>
         <div id="burger_knap">
             <div></div>
             <div></div>
@@ -31,13 +34,18 @@
         </nav>
     </header>
 
-    <div class="knapper">
-        <button class="filter valgt" data-overkategori="alle">Alle øl</button>
-        <button class="filter" data-overkategori="pilsner">Pilsner</button>
-        <button class="filter" data-overkategori="pale_ale">Pale Ale</button>
-        <button class="filter" data-overkategori="stout">Stout</button>
-    </div>
+
     <main>
+        <article class="beskrivelse">
+            <h1>Alle øl</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita est, rerum reiciendis voluptates facilis omnis fugiat modi esse, dolore ab earum perspiciatis eum. In cum sunt earum cupiditate commodi dolores! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur cupiditate error, enim aperiam soluta explicabo itaque deleniti officiis delectus laboriosam libero laborum ullam vel natus, tempore ratione similique. Consequuntur, ducimus.</p>
+        </article>
+        <div class="knapper">
+            <button class="filter valgt" data-overkategori="alle">Alle øl</button>
+            <button class="filter" data-overkategori="pilsner">Pilsner</button>
+            <button class="filter" data-overkategori="pale_ale">Pale Ale</button>
+            <button class="filter" data-overkategori="stout">Stout</button>
+        </div>
         <section id="data_container"></section>
     </main>
     <div id="popup">

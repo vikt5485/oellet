@@ -223,9 +223,9 @@ em {
 }
 
 .beskrivelse {
-    margin: 30px auto;
+    margin: 30px;
     text-align-last: left;
-    max-width: 700px;
+    max-width: 600px;
 }
 
 .beskrivelse h1 {
@@ -419,6 +419,10 @@ footer {
 @media only screen and (min-width: 600px) {
     #splash {
         background-position: 50% 0%;
+    }
+
+    .beskrivelse {
+        margin: 30px auto;
     }
 }
 

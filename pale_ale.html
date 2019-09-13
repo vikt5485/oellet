@@ -67,7 +67,7 @@
         </section>
     </div>
 
-       <footer>
+    <footer>
         <div class="footer_div">
             <h3>Gruppe 23: Øllet</h3>
             <h4>Viktor Friis Kjeldal</h4>
@@ -116,7 +116,7 @@
                     klon.querySelector(".billede").alt = `Billede af ${beer.gsx$navn.$t}`;
                     klon.querySelector(".navn").textContent = beer.gsx$navn.$t;
                     klon.querySelector(".kort").textContent = beer.gsx$kort.$t;
-                    klon.querySelector(".bryghus").textContent = `Bryghus: ${beer.gsx$bryghus.$t}`;
+                    klon.querySelector(".bryghus").innerHTML = `<em>Bryghus:</em> ${beer.gsx$bryghus.$t}`;
 
                     dataContainer.appendChild(klon);
 
@@ -135,7 +135,7 @@
             //NAVN
             document.querySelector(".single_navn").textContent = beer.gsx$navn.$t;
             //BRYGHUS
-            document.querySelector(".single_beer .bryghus").textContent = `Bryghus: ${beer.gsx$bryghus.$t}`;
+            document.querySelector(".single_beer .bryghus").innerHTML = `<em>Bryghus:</em> ${beer.gsx$bryghus.$t}`;
             //BILLEDE
             document.querySelector(".single_beer img").src = `imgs/oel/${beer.gsx$billede.$t}.jpg`;
             document.querySelector(".single_beer img").alt = `Billede af ${beer.gsx$navn.$t}`;
@@ -172,9 +172,6 @@
             this.classList.add("valgt");
             showPaleAles();
         }
-
     </script>
     <script src="burgerMenu.js"></script>
-</body>
-
-</html>
+</body></html>

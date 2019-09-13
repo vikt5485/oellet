@@ -133,7 +133,7 @@
             //NAVN
             document.querySelector(".single_navn").textContent = beer.gsx$navn.$t;
             //BRYGHUS
-            document.querySelector(".single_beer .bryghus").textContent = `Bryghus: ${beer.gsx$bryghus.$t}`;
+            document.querySelector(".single_beer .bryghus").innerHTML = `<em>Bryghus:</em> ${beer.gsx$bryghus.$t}`;
             //BILLEDE
             document.querySelector(".single_beer img").src = `imgs/oel/${beer.gsx$billede.$t}.jpg`;
             document.querySelector(".single_beer img").alt = `Billede af ${beer.gsx$navn.$t}`;

@@ -20,7 +20,7 @@
                 <h1>Øllet</h1>
             </div>
         </a>
-        <div id="burger_knap">
+        <div class="pos_absolute" id="burger_knap">
             <div></div>
             <div></div>
             <div></div>
@@ -30,7 +30,7 @@
             <div class="menu_links">
                 <a href="index.html"> HJEM </a>
                 <a href="alle_oel.html"> ALLE ØL </a>
-                <a href="pilsner.html"> PILSNER </a>
+                <a class="menu_valgt" href="pilsner.html"> PILSNER </a>
                 <a href="pale_ale.html"> PALE ALE </a>
                 <a href="stout.html"> STOUT </a>
             </div>
@@ -159,11 +159,11 @@
                 document.querySelector("#popup").style.display = "none";
             })
 
-            window.onclick = function(event) {
+            window.addEventListener("click", (event) => {
                 if (event.target == popup) {
                     popup.style.display = "none";
                 }
-            }
+            })
         }
 
 

@@ -19,7 +19,7 @@
                 <h1>Øllet</h1>
             </div>
         </a>
-        <div id="burger_knap">
+        <div class="pos_absolute" id="burger_knap">
             <div></div>
             <div></div>
             <div></div>
@@ -28,7 +28,7 @@
         <nav id="menu" class="toggle_menu">
             <div class="menu_links">
                 <a href="index.html"> HJEM </a>
-                <a href="alle_oel.html"> ALLE ØL </a>
+                <a class="menu_valgt" href="alle_oel.html"> ALLE ØL </a>
                 <a href="pilsner.html"> PILSNER </a>
                 <a href="pale_ale.html"> PALE ALE </a>
                 <a href="stout.html"> STOUT </a>
@@ -151,12 +151,11 @@
             })
 
 
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
+            window.addEventListener("click", (event) => {
                 if (event.target == popup) {
                     popup.style.display = "none";
                 }
-            }
+            })
         }
 
 

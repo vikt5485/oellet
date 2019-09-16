@@ -9,7 +9,10 @@ function burgerAktiv() {
 
         burgerKnap.classList.toggle("open");
 
+
         document.querySelector("#menu").classList.toggle("toggle_menu");
+        document.querySelector("#burger_knap").classList.toggle("pos_fixed");
+
 
         document.querySelector("#portfolio_link").addEventListener("mouseup", toggleMenu);
         document.querySelector("#cv_link").addEventListener("mouseup", toggleMenu);
@@ -17,9 +20,11 @@ function burgerAktiv() {
     });
 
 
+
     function toggleMenu() {
         console.log("toggleMenu");
         burgerKnap.classList.toggle("open");
         document.querySelector("#menu").classList.toggle("toggle_menu");
     }
+
 }

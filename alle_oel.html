@@ -88,6 +88,7 @@
         let allBeer;
         const dataContainer = document.querySelector("#data_container");
         const temp = document.querySelector("template");
+        const popup = document.querySelector("#popup");
 
         let overKategori = "alle";
 
@@ -128,7 +129,7 @@
 
         function visSingle(beer) {
             console.log("visSingle");
-            document.querySelector("#popup").style.display = "flex";
+            popup.style.display = "flex";
 
             //NAVN
             document.querySelector(".single_navn").textContent = beer.gsx$navn.$t;
@@ -148,6 +149,14 @@
             document.querySelector(".luk").addEventListener("click", () => {
                 document.querySelector("#popup").style.display = "none";
             })
+
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == popup) {
+                    popup.style.display = "none";
+                }
+            }
         }
 
 

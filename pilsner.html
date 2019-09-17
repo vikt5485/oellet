@@ -167,6 +167,9 @@
                 document.querySelector("#popup").style.display = "none";
             }) // på luk knappen lukkes popup vinduet
 
+
+            //Koden nedenfor gør at vores popup vindue lukker, hvis man klikker udenfor popup'en
+            //Koden er lånt fra w3schools: https://www.w3schools.com/w3css/w3css_modal.asp
             window.addEventListener("click", (event) => {
                 if (event.target == popup) {
                     popup.style.display = "none";

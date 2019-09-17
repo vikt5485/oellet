@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://use.typekit.net/xny8hjv.css">
     <link rel="stylesheet" href="https://use.typekit.net/xny8hjv.css">
-
 </head>
 
 <body>
@@ -38,8 +37,6 @@
             </div>
         </nav>
     </header>
-
-
     <main>
         <article class="beskrivelse">
             <!-- Overskrift og beskrivelse af den vaglte kategori -->
@@ -75,7 +72,6 @@
             </article>
         </section>
     </div>
-
     <footer>
         <div class="footer_div">
             <h3>Gruppe 23: Øllet</h3>
@@ -84,7 +80,6 @@
             <h4>Kirstine Aggergaard</h4>
         </div>
     </footer>
-
     <template>
         <!-- template til visning af dynamisk indhold på siden, templaten er skjult indtil at man ved hjælp af jS henter indhold i den -->
         <article class="beer">
@@ -127,6 +122,7 @@
 
 
             // pilsner array'et gennemgås øl for øl, og tilføjes/vises i det foreløbige tomme template hvis de har den rette filter-kategori
+            data_container.innerHTML = "";
             allPilsner.feed.entry.forEach(beer => {
                 if (beer.gsx$overkategori.$t == "pilsner" && underKategori == "alle" || underKategori == beer.gsx$underkategori.$t) {
                     let klon = temp.cloneNode(true).content;
@@ -143,7 +139,6 @@
                     })
                 }
             })
-
             kategoriKlik();
         }
 
@@ -182,6 +177,7 @@
 
         function kategoriKlik() {
             console.log("kategoriKlik");
+
             document.querySelectorAll(".filter").forEach(knap => {
                 knap.addEventListener("click", filtrering);
             }) // hver gang der klikkes på en filtrerings knap --> bliver functionen filtrering() kaldt

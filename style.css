@@ -1,13 +1,14 @@
 :root {
+    /* Vi definerer de farver vi vil bruge som variabler, så vi hurtigt kan ændre farverne ét sted */
     --main-color: #3C3C3C;
     --secondary-color: #50524F;
     --third-color: white;
     --light-orange: #ffb72f;
+    --lighter-orange: #ffcd6e;
 }
 
 * {
     box-sizing: border-box;
-
 }
 
 body {
@@ -20,7 +21,59 @@ html {
     scroll-behavior: smooth;
 }
 
-/* HEADER */
+/************ TYPOGRAFI ************/
+h1 {
+    font-family: interstate, sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 3rem;
+    text-align: center;
+    color: var(--third-color);
+}
+
+h2 {
+    font-family: interstate, sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 2.2rem;
+    color: var(--main-color);
+    margin: 10px 0 5px 0;
+}
+
+h3 {
+    font-family: interstate, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.8rem;
+    color: var(--main-color);
+    margin: 0 0 5px 0;
+}
+
+h4 {
+    font-size: 1.6rem;
+    font-family: interstate, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.6rem;
+    font-weight: normal;
+    color: var(--third-color);
+    margin: 0 0 3px 0;
+}
+
+p {
+    font-size: 1.6rem;
+    font-family: interstate, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--third-color);
+}
+
+em {
+    font-weight: 700;
+    font-style: normal;
+}
+
+/************ HEADER ************/
 header {
     display: grid;
     width: 100vw;
@@ -29,7 +82,6 @@ header {
     grid-template-rows: 1fr;
     background-color: var(--secondary-color);
 }
-
 
 nav {
     width: 100vw;
@@ -46,10 +98,6 @@ nav {
     overflow: hidden;
 }
 
-.toggle_menu {
-    transform: translateX(100%);
-}
-
 #logo {
     display: flex;
     align-items: center;
@@ -58,23 +106,93 @@ nav {
     padding: 20px;
 }
 
-#logo h1 {
-    text-align: left;
-    margin-left: 10px;
-    font-family: interstate, sans-serif;
-    font-weight: 100;
-    font-size: 4.5rem;
-    text-transform: uppercase;
-}
-
-header a {
-    text-decoration: none;
-}
-
 header #logo img {
     height: 100%;
 }
 
+/* BURGER MENU */
+#burger_knap {
+    top: 37.5px;
+    right: 37.5px;
+    width: 75px;
+    height: 75px;
+    transform: rotate(0deg);
+    transition: .5s ease-in-out;
+    cursor: pointer;
+    z-index: 120;
+}
+
+#burger_knap div {
+    display: block;
+    position: absolute;
+    height: 8px;
+    width: 50px;
+    background-color: var(--third-color);
+    border-radius: 2px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+
+#burger_knap div:nth-child(1) {
+    top: 20px;
+    left: 12px;
+}
+
+/* Der ligger to div'er oveni hinanden, for at animationen når man klikker på den ser naturlig ud */
+#burger_knap div:nth-child(2),
+#burger_knap div:nth-child(3) {
+    top: 33.5px;
+    left: 12px;
+}
+
+#burger_knap div:nth-child(4) {
+    top: 47px;
+    left: 12px;
+}
+
+/* Når #burger_knap får klassen .open ved hjælp af JavaScript, bliver div nr. 1 usynlig */
+#burger_knap.open div:nth-child(1) {
+    top: 18px;
+    width: 0%;
+    left: 50%;
+}
+
+/* Når #burger_knap får klassen .open ved hjælp af JavaScript, roterer div nr. 2 45 grader og skifter farve */
+#burger_knap.open div:nth-child(2) {
+    transform: rotate(45deg);
+    background-color: var(--third-color);
+}
+
+/* Når #burger_knap får klassen .open ved hjælp af JavaScript, roterer div nr. 3 -45 grader og skifter farve */
+#burger_knap.open div:nth-child(3) {
+    transform: rotate(-45deg);
+    background-color: var(--third-color);
+}
+
+/* Når #burger_knap får klassen .open ved hjælp af JavaScript, bliver div nr. 4 usynlig */
+#burger_knap.open div:nth-child(4) {
+    top: 18px;
+    width: 0%;
+    left: 50%;
+}
+
+/* Den klasse der åbner burgermenuen */
+.toggle_menu {
+    transform: translateX(100%);
+}
+
+/* To klasser der sørger for at burger knappen forbliver på skærmen når den åbnes */
+.pos_absolute {
+    position: absolute;
+}
+
+.pos_fixed {
+    position: fixed;
+}
+
+/****** MENU TEKST STYLING ******/
 .menu_links {
     margin: 0;
     padding: 0;
@@ -98,162 +216,27 @@ header #logo img {
 }
 
 .menu_links a:hover {
-    color: #ffcd6e;
+    color: var(--lighter-orange);
 }
 
 a.menu_valgt {
     color: var(--light-orange);
 }
 
-#burger_knap {
-    top: 37.5px;
-    right: 37.5px;
-    width: 75px;
-    height: 75px;
-    transform: rotate(0deg);
-    transition: .5s ease-in-out;
-    cursor: pointer;
-    background-image: url(assets/white_circle.svg);
-    background-size: 100%;
-    z-index: 120;
-}
-
-.pos_absolute {
-    position: absolute;
-}
-
-.pos_fixed {
-    position: fixed;
-}
-
-#burger_knap div {
-    display: block;
-    position: absolute;
-    height: 8px;
-    width: 50px;
-    background-color: var(--third-color);
-    border-radius: 2px;
-    opacity: 1;
-    left: 0;
-    transform: rotate(0deg);
-    transition: .25s ease-in-out;
-}
-
-#burger_knap div:nth-child(1) {
-    top: 20px;
-    left: 12px;
-}
-
-#burger_knap div:nth-child(2),
-#burger_knap div:nth-child(3) {
-    top: 33.5px;
-    left: 12px;
-}
-
-#burger_knap div:nth-child(4) {
-    top: 47px;
-    left: 12px;
-}
-
-#burger_knap.open div:nth-child(1) {
-    top: 18px;
-    width: 0%;
-    left: 50%;
-}
-
-#burger_knap.open div:nth-child(2) {
-    transform: rotate(45deg);
-    background-color: var(--third-color);
-}
-
-#burger_knap.open div:nth-child(3) {
-    transform: rotate(-45deg);
-    background-color: var(--third-color);
-}
-
-#burger_knap.open div:nth-child(4) {
-    top: 18px;
-    width: 0%;
-    left: 50%;
-}
-
-.hide_main {
-    display: none;
-}
-
-
-h1 {
+#logo h1 {
+    text-align: left;
+    margin-left: 10px;
     font-family: interstate, sans-serif;
-    font-weight: 200;
-    font-style: normal;
-    font-size: 3rem;
-    text-align: center;
-    color: var(--third-color);
+    font-weight: 100;
+    font-size: 4.5rem;
+    text-transform: uppercase;
 }
 
-
-
-h2 {
-    font-family: interstate, sans-serif;
-    font-weight: 200;
-    font-style: normal;
-    font-size: 2.2rem;
-    color: var(--main-color);
-    margin: 10px 0 5px 0;
+header a {
+    text-decoration: none;
 }
 
-h3 {
-    font-family: interstate, sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 1.8rem;
-    color: var(--main-color);
-    margin: 0 0 5px 0;
-}
-
-p {
-    font-size: 1.6rem;
-    font-family: interstate, sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    color: var(--third-color);
-}
-
-h4 {
-    font-size: 1.6rem;
-    font-family: interstate, sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 1.6rem;
-    font-weight: normal;
-    color: var(--third-color);
-    margin: 0 0 3px 0;
-}
-
-em {
-    font-weight: 700;
-    font-style: normal;
-}
-
-.kort {
-    font-size: 1.6rem;
-    font-family: interstate, sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    color: var(--main-color);
-    margin: 15px 10px 10px 0;
-}
-
-.beskrivelse {
-    margin: 30px;
-    text-align-last: left;
-    max-width: 600px;
-}
-
-.beskrivelse h1 {
-    margin-bottom: 0px;
-}
-
+/****** SPLASH ******/
 #splash {
     width: 100vw;
     height: 100vh;
@@ -320,6 +303,18 @@ em {
     transform: scale(1.03);
 }
 
+
+/******* UNDERSIDER *******/
+.beskrivelse {
+    margin: 30px;
+    text-align-last: left;
+    max-width: 600px;
+}
+
+.beskrivelse h1 {
+    margin-bottom: 0px;
+}
+
 #data_container {
     display: grid;
     padding: 10px;
@@ -327,9 +322,44 @@ em {
     width: 100vw;
 }
 
+.knapper {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 30px;
+    margin: 30px auto 10px auto;
+    max-width: 90vw;
+}
+
+button {
+    height: 50px;
+    background-color: transparent;
+    border: 2px solid var(--third-color);
+    outline: 5px solid var(--third-color);
+    outline-offset: 3px;
+    color: var(--third-color);
+    font-size: 2rem;
+    font-family: interstate, sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+button:hover {
+    border: 2px solid var(--lighter-orange);
+    outline: 5px solid var(--lighter-orange);
+    color: var(--lighter-orange);
+}
+
+.valgt {
+    border: 2px solid var(--light-orange);
+    outline: 5px solid var(--light-orange);
+    color: var(--light-orange);
+}
+
+/******** TEMPLATE *********/
 .beer {
     height: 250px;
-    ;
     padding: 20px;
     background-color: var(--third-color);
     border-radius: 8px;
@@ -338,30 +368,55 @@ em {
     cursor: pointer;
 }
 
+.kort {
+    font-size: 1.6rem;
+    font-family: interstate, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--main-color);
+    margin: 15px 10px 10px 0;
+}
+
 .billede {
     height: 100%;
     float: left;
     margin: 5px 40px 5px 10px;
 }
 
+/******** POPUP *********/
 #popup {
+    /* Den div der fylder hele vinduet */
     position: fixed;
     top: 0;
+
+    /* Div'en fylder hele bredden og højden af vinduet */
     width: 100vw;
     height: 100vh;
+
+    /* Div'en er sort, og har en opacity på 0.75 */
     background-color: rgba(0, 0, 0, 0.75);
-    justify-content: center;
-    align-items: center;
+
+    /* Popup vinduet er som udgangspunkt skjult, men får display: flex; når den åbnes */
     display: none;
+
+    /* Centrerer .indhold vandret */
+    justify-content: center;
+
+    /* Centrerer .indhold lodret */
+    align-items: center;
+
     z-index: 130;
 }
 
 .indhold {
+    /* Det er her vores single view indhold bliver vist */
     width: 80vw;
     max-width: 600px;
     max-height: 80vh;
     background-color: white;
     padding: 20px;
+
+    /* Gør at man kan scrolle i vinduet, hvis der ikke er plads til indholdet */
     overflow: scroll;
     z-index: 140;
     color: black;
@@ -407,41 +462,7 @@ em {
     color: var(--light-orange);
 }
 
-.knapper {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 30px;
-    margin: 30px auto 10px auto;
-    max-width: 90vw;
-}
-
-button {
-    height: 50px;
-    background-color: transparent;
-    border: 2px solid var(--third-color);
-    outline: 5px solid var(--third-color);
-    outline-offset: 3px;
-    color: var(--third-color);
-    font-size: 2rem;
-    font-family: interstate, sans-serif;
-    font-weight: 900;
-    text-transform: uppercase;
-    cursor: pointer;
-}
-
-button:hover {
-    border: 2px solid #ffcd6e;
-    outline: 5px solid #ffcd6e;
-    color: #ffcd6e;
-}
-
-.valgt {
-    border: 2px solid var(--light-orange);
-    outline: 5px solid var(--light-orange);
-    color: var(--light-orange);
-}
-
+/******* FOOTER *******/
 footer {
     background-color: var(--secondary-color);
     height: 130px;
@@ -462,6 +483,7 @@ footer {
 
 @media only screen and (min-width: 750px) {
     #data_container {
+        /* Laver 2 lige store kolonner i vores grid med øl */
         grid-template-columns: 1fr 1fr;
     }
 
@@ -474,26 +496,40 @@ footer {
     }
 
     #navigation {
+        /* Laver 4 lige store kolonner i vores forside grid */
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-template-rows: 1fr
     }
-
-
 }
 
 @media only screen and (min-width: 1200px) {
     #data_container {
+        /* Laver 3 lige store kolonner i vores grid med øl */
         grid-template-columns: 1fr 1fr 1fr;
     }
 
+    /******** FRA BURGERMENU TIL MENU I HEADER ********/
+    nav {
+        grid-column: 2/4;
+        width: 100%;
+        height: 100px;
+        background-color: transparent;
+        position: relative;
+        justify-content: flex-end;
+        align-items: flex-end;
+        align-self: flex-end;
+        margin-bottom: 10px;
+    }
+
     #burger_knap {
+        /* Skjuler burger knappen */
         display: none;
     }
 
     .menu_links {
+        /* Ændrer flex-direction og sørger for at "skubbe" indholdet til højre */
         flex-direction: row;
         justify-content: flex-end;
-
     }
 
     .menu_links a {
@@ -507,19 +543,8 @@ footer {
     }
 
     .toggle_menu {
+        /* Sørger for at menuen er synlig hele tiden */
         transform: translateX(0);
-    }
-
-    nav {
-        grid-column: 2/4;
-        width: 100%;
-        height: 100px;
-        background-color: transparent;
-        position: relative;
-        justify-content: flex-end;
-        align-items: flex-end;
-        align-self: flex-end;
-        margin-bottom: 10px;
     }
 
     .knapper {

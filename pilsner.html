@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://use.typekit.net/xny8hjv.css">
     <link rel="stylesheet" href="https://use.typekit.net/xny8hjv.css">
-
-
 </head>
 
 <body>
@@ -36,8 +34,6 @@
             </div>
         </nav>
     </header>
-
-
     <main>
         <article class="beskrivelse">
             <h1>Pilsner</h1>
@@ -65,7 +61,6 @@
             </article>
         </section>
     </div>
-
     <footer>
         <div class="footer_div">
             <h3>Gruppe 23: Øllet</h3>
@@ -74,7 +69,6 @@
             <h4>Kirstine Aggergaard</h4>
         </div>
     </footer>
-
     <template>
         <article class="beer">
             <img class="billede" src="" alt="">
@@ -116,7 +110,6 @@
         function showPilsner() {
             console.log("showBeer")
             data_container.innerHTML = "";
-
             allPilsner.feed.entry.forEach(beer => {
                 if (beer.gsx$overkategori.$t == "pilsner" && underKategori == "alle" || underKategori == beer.gsx$underkategori.$t) {
                     let klon = temp.cloneNode(true).content;
@@ -133,6 +126,8 @@
                     })
                 }
             })
+
+
             kategoriKlik();
         }
 
@@ -169,6 +164,7 @@
 
         function kategoriKlik() {
             console.log("kategoriKlik");
+
             document.querySelectorAll(".filter").forEach(knap => {
                 knap.addEventListener("click", filtrering);
             })

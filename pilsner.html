@@ -8,12 +8,11 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://use.typekit.net/xny8hjv.css">
     <link rel="stylesheet" href="https://use.typekit.net/xny8hjv.css">
-
-
 </head>
 
 <body>
     <header>
+        <!-- Header med logo, navn på siden og navigations/burger menu -->
         <a href="index.html">
             <div id="logo">
                 <img src="imgs/assets/logo.svg" alt="logo">
@@ -21,12 +20,14 @@
             </div>
         </a>
         <div class="pos_absolute" id="burger_knap">
+            <!-- Burger menu -->
             <div></div>
             <div></div>
             <div></div>
             <div></div>
         </div>
         <nav id="menu" class="toggle_menu">
+            <!-- Navigations menu -->
             <div class="menu_links">
                 <a href="index.html"> HJEM </a>
                 <a href="alle_oel.html"> ALLE ØL </a>
@@ -36,25 +37,31 @@
             </div>
         </nav>
     </header>
-
-
     <main>
         <article class="beskrivelse">
+            <!-- Overskrift og beskrivelse af den vaglte kategori -->
             <h1>Pilsner</h1>
             <p>Pilsneren er oprindelig en undergæret øl fra byen Plzeň (Pilsen) i Vestbøhmen, hvor den tyskfødte brygger Josef Groll (1813-87) inspireret af den bayerske metode i 1842 producerede et bryg baseret på undergær. Til Grolls "pilsner" blev anvendt særlig fin humle, og øltypens for datiden meget lyse farve faldt i forbrugernes smag. I de følgende årtier bredte bryggemetoden sig over det meste af Europa som konkurrent til den mørkere bajer. I Danmark grundlagde Tuborgs brygmester Hans Bekkevold (1837-1905) den første danske pilsnersucces i 1880. Den kontinentale pilsner er i dag den mest udbredte øltype i verden.</p>
         </article>
+
         <div class="knapper">
+            <!--filtreringsmenu-->
             <button class="filter valgt" data-underkategori="alle">Alle</button>
+            <!-- filtreringsknappernes data-attribut indeholder den værdi som skal filtreres -->
             <button class="filter" data-underkategori="dansk_pil">Dansk</button>
             <button class="filter" data-underkategori="tjek_pil">Tjekkisk</button>
             <button class="filter" data-underkategori="tysk_pil">Tysk</button>
         </div>
-        <section id="data_container"></section>
+
+        <section id="data_container"></section> <!-- tom container, hvor alt indhold fra googlesheetet dynamisk indsættes -->
+
     </main>
     <div id="popup">
+        <!-- popup vindue til visning af hvert enkelt øl (single-wiew) -->
         <section class="indhold">
-            <button class="luk">X</button>
+            <button class="luk">X</button> <!-- luk-knap til popvinduet-->
             <article class="single_beer">
+                <!-- popup vinduets indhold indlæses dynamisk heri-->
                 <img src="" alt="">
                 <h1 class="single_navn"></h1>
                 <h2 class="bryghus"></h2>
@@ -65,7 +72,6 @@
             </article>
         </section>
     </div>
-
     <footer>
         <div class="footer_div">
             <h3>Gruppe 23: Øllet</h3>
@@ -74,8 +80,8 @@
             <h4>Kirstine Aggergaard</h4>
         </div>
     </footer>
-
     <template>
+        <!-- template til visning af dynamisk indhold på siden, templaten er skjult indtil at man ved hjælp af jS henter indhold i den -->
         <article class="beer">
             <img class="billede" src="" alt="">
             <h2 class="navn"></h2>
@@ -85,18 +91,15 @@
     </template>
 
 
-    <div class="knapper">
-
-    </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", getJson);
-        let allPilsner;
-        const dataContainer = document.querySelector("#data_container");
-        const temp = document.querySelector("template");
-        const popup = document.querySelector("#popup");
+        let allPilsner; // tomt array - her lægges øllerne fra json-filen
+        const dataContainer = document.querySelector("#data_container"); //#data_container, den tomme container
+        const temp = document.querySelector("template"); // template, den tomme template
+        const popup = document.querySelector("#popup"); // #popup, det tomme popup vindue
 
-        let underKategori = "alle";
+        let underKategori = "alle"; // alle pilsnere skal vises som udgangspunkt
 
         //Hent JSON fil i asynkron funktion
         async function getJson() {
@@ -115,8 +118,11 @@
 
         function showPilsner() {
             console.log("showBeer")
-            data_container.innerHTML = "";
+            data_container.innerHTML = ""; //data_container nulstilles/tømmes
 
+
+            // pilsner array'et gennemgås øl for øl, og tilføjes/vises i det foreløbige tomme template hvis de har den rette filter-kategori
+            data_container.innerHTML = "";
             allPilsner.feed.entry.forEach(beer => {
                 if (beer.gsx$overkategori.$t == "pilsner" && underKategori == "alle" || underKategori == beer.gsx$underkategori.$t) {
                     let klon = temp.cloneNode(true).content;
@@ -129,7 +135,7 @@
                     dataContainer.appendChild(klon);
 
                     dataContainer.lastElementChild.addEventListener("click", () => {
-                        visSingle(beer);
+                        visSingle(beer); // ved click  på en enkelt øl --> går til funktionen visSingle(beer)
                     })
                 }
             })
@@ -139,6 +145,8 @@
         function visSingle(beer) {
             console.log("visSingle");
             popup.style.display = "flex";
+
+            // her hentes hver enkelt øl's indhold dynamisk ned i popup vinduet
 
             //NAVN
             document.querySelector(".single_navn").textContent = beer.gsx$navn.$t;
@@ -157,34 +165,38 @@
 
             document.querySelector(".luk").addEventListener("click", () => {
                 document.querySelector("#popup").style.display = "none";
-            })
+            }) // på luk knappen lukkes popup vinduet
 
+
+            //Koden nedenfor gør at vores popup vindue lukker, hvis man klikker udenfor popup'en
+            //Koden er lånt fra w3schools: https://www.w3schools.com/w3css/w3css_modal.asp
             window.addEventListener("click", (event) => {
                 if (event.target == popup) {
                     popup.style.display = "none";
                 }
-            })
+            }) //ved klik på baggrunden bag popup vinduet lukkes popup vinduet også
         }
 
 
         function kategoriKlik() {
             console.log("kategoriKlik");
+
             document.querySelectorAll(".filter").forEach(knap => {
                 knap.addEventListener("click", filtrering);
-            })
+            }) // hver gang der klikkes på en filtrerings knap --> bliver functionen filtrering() kaldt
         }
 
         function filtrering() {
             console.log("filtrering");
 
-            underKategori = this.dataset.underkategori;
+            underKategori = this.dataset.underkategori; //variablen underKategori sættes lig ned den vaglte knaps dataset
 
             document.querySelectorAll(".filter").forEach(knap => {
                 knap.classList.remove("valgt");
             })
 
             this.classList.add("valgt");
-            showPilsner();
+            showPilsner(); //
         }
     </script>
     <script src="burgerMenu.js"></script>

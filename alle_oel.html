@@ -41,9 +41,7 @@
             <h1>Alle øl</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita est, rerum reiciendis voluptates facilis omnis fugiat modi esse, dolore ab earum perspiciatis eum. In cum sunt earum cupiditate commodi dolores! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur cupiditate error, enim aperiam soluta explicabo itaque deleniti officiis delectus laboriosam libero laborum ullam vel natus, tempore ratione similique. Consequuntur, ducimus.</p>
         </article>
-        <div class="knapper">
-            <button class="filter valgt" data-overkategori="alle">Alle øl</button>
-        </div>
+
         <section id="data_container"></section>
     </main>
     <div id="popup">
@@ -154,27 +152,6 @@
                     popup.style.display = "none";
                 }
             })
-        }
-
-
-        function kategoriKlik() {
-            console.log("kategoriKlik");
-            document.querySelectorAll(".filter").forEach(knap => {
-                knap.addEventListener("click", filtrering);
-            })
-        }
-
-        function filtrering() {
-            console.log("filtrering");
-
-            overKategori = this.dataset.overkategori;
-
-            document.querySelectorAll(".filter").forEach(knap => {
-                knap.classList.remove("valgt");
-            })
-
-            this.classList.add("valgt");
-            showBeer();
         }
 
     </script>

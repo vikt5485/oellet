@@ -1,30 +1,16 @@
 document.addEventListener("DOMContentLoaded", burgerAktiv);
 
 const burgerKnap = document.querySelector("#burger_knap");
+const menu = document.querySelector("#menu");
 
 
 function burgerAktiv() {
     burgerKnap.addEventListener("click", () => {
         console.log("openMenu");
 
-        burgerKnap.classList.toggle("open");
+        burgerKnap.classList.toggle("open"); //Selve knappen toggler klassen .open, hvilket animerer den til et kryds
+        burgerKnap.classList.toggle("pos_fixed"); //Knappen toggler position fixed, for at den bliver i toppen af skærmen når den er åben
 
-
-        document.querySelector("#menu").classList.toggle("toggle_menu");
-        document.querySelector("#burger_knap").classList.toggle("pos_fixed");
-
-
-        document.querySelector("#portfolio_link").addEventListener("mouseup", toggleMenu);
-        document.querySelector("#cv_link").addEventListener("mouseup", toggleMenu);
-        document.querySelector("#kontakt_link").addEventListener("mouseup", toggleMenu);
-    });
-
-
-
-    function toggleMenu() {
-        console.log("toggleMenu");
-        burgerKnap.classList.toggle("open");
-        document.querySelector("#menu").classList.toggle("toggle_menu");
-    }
-
+        menu.classList.toggle("toggle_menu"); //Selve menuen toggler klassen .toggle_menu, som åbner og lukker menuen
+    })
 }

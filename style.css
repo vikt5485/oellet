@@ -106,6 +106,14 @@ nav {
     padding: 20px;
 }
 
+#logo h1 {
+    text-align: left;
+    margin-left: 10px;
+    font-family: interstate, sans-serif;
+    font-weight: 100;
+    font-size: 4.5rem;
+}
+
 header #logo img {
     height: 100%;
 }
@@ -223,14 +231,7 @@ a.menu_valgt {
     color: var(--light-orange);
 }
 
-#logo h1 {
-    text-align: left;
-    margin-left: 10px;
-    font-family: interstate, sans-serif;
-    font-weight: 100;
-    font-size: 4.5rem;
-    text-transform: uppercase;
-}
+
 
 header a {
     text-decoration: none;
